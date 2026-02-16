@@ -1,0 +1,55 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/manifest.json b/manifest.json
+index be14fa2ea6143f55880510304bfeb1541e3ebc26..208bc4fc41f6bac4b8722020d6b7d5aa2d21689a 100644
+--- a/manifest.json
++++ b/manifest.json
+@@ -1,21 +1,25 @@
+-{
+-  "name": "점심메뉴 룰렛",
+-  "short_name": "점심룰렛",
+-  "start_url": "index.html",
+-  "display": "standalone",
+-  "background_color": "#f2f2f2",
+-  "theme_color": "#000000",
+-  "icons": [
+-    {
+-      "src": "icon.png",
+-      "sizes": "192x192",
+-      "type": "image/png"
+-    },
+-    {
+-      "src": "icon.png",
+-      "sizes": "512x512",
+-      "type": "image/png"
+-    }
+-  ]
+-}
+-
++{
++  "name": "40-50 남성 홈트레이닝",
++  "short_name": "홈트40+",
++  "start_url": "./index.html",
++  "scope": "./",
++  "display": "standalone",
++  "orientation": "portrait",
++  "background_color": "#f1f5f9",
++  "theme_color": "#0f172a",
++  "description": "요일별 맨손 운동 체크와 목표 달성 영어 대화 보상 제공",
++  "icons": [
++    {
++      "src": "icon.png",
++      "sizes": "192x192",
++      "type": "image/png",
++      "purpose": "any maskable"
++    },
++    {
++      "src": "icon.png",
++      "sizes": "512x512",
++      "type": "image/png",
++      "purpose": "any maskable"
++    }
++  ]
++}
+ 
+EOF
+)
