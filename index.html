@@ -1,476 +1,554 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+index 946f06cb0e8885868f244ea858fc8693cec4f37a..30d299970d0203f432bbcd7ea1e74c6efa88139c 100644
+--- a/index.html
++++ b/index.html
+@@ -1,299 +1,295 @@
  <!DOCTYPE html>
  <html lang="ko">
  <head>
-+  <meta charset="UTF-8" />
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-+  <meta name="theme-color" content="#123524" />
-+  <meta name="apple-mobile-web-app-capable" content="yes" />
-+  <meta name="apple-mobile-web-app-title" content="40+ 맨손 운동" />
-+  <meta property="og:title" content="40-50 남성 홈트 코치" />
-+  <meta property="og:description" content="요일별 부위 운동 + 완료 보상 영어 회화" />
-+  <meta property="og:image" content="./og_image.png" />
-+  <meta property="og:type" content="website" />
-+  <meta property="og:url" content="./" />
-+  <link rel="manifest" href="manifest.json" />
-+  <link rel="icon" href="icon.png" />
-+  <link rel="apple-touch-icon" href="icon.png" />
-+  <title>40-50 남성 홈트 코치</title>
+-  <link rel="manifest" href="manifest.json">
+-  <meta name="theme-color" content="#000000">
+-  <link rel="icon" href="icon.png">
+-  <meta property="og:title" content="점심메뉴 룰렛">
+-  <meta property="og:description" content="오늘의 점심메뉴를 재미있게 선택해보세요!">
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
++  <meta name="theme-color" content="#0f172a">
++  <meta name="apple-mobile-web-app-capable" content="yes">
++  <meta name="apple-mobile-web-app-title" content="40+ 홈트 PWA">
++  <meta property="og:title" content="40-50 남성 홈트 PWA">
++  <meta property="og:description" content="요일별 맨손운동 + 목표 달성 영어 대화 보상">
+   <meta property="og:image" content="og_image.png">
+   <meta property="og:type" content="website">
+-  <meta property="og:url" content="https://joshuee2.github.io/lunch/">
+-  <meta name="apple-mobile-web-app-capable" content="yes">
+-  <meta name="apple-mobile-web-app-title" content="점심메뉴 룰렛">
++  <meta property="og:image:width" content="1200">
++  <meta property="og:image:height" content="630">
++  <meta name="twitter:card" content="summary_large_image">
++  <meta name="twitter:title" content="40-50 남성 홈트 PWA">
++  <meta name="twitter:description" content="요일별 맨손운동 + 목표 달성 영어 대화 보상">
++  <meta name="twitter:image" content="og_image.png">
++  <link rel="manifest" href="manifest.json">
++  <link rel="icon" href="icon.png">
+   <link rel="apple-touch-icon" href="icon.png">
+-  <meta charset="UTF-8">
+-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+-  <title>점심메뉴 룰렛</title>
++  <title>40-50 남성 홈트 PWA</title>
    <style>
+-    html, body {
+-      margin: 0;
+-      padding: 0;
+-      width: 100%;
+-      height: 100%;
+-      overflow-x: hidden;
+-      background: #f2f2f2;
+-      font-family: 'Arial', sans-serif;
 +    :root {
++      color-scheme: light;
++      --bg: #f1f5f9;
 +      --card: #ffffff;
-+      --primary: #123524;
-+      --accent: #3e7b4a;
-+      --text: #1f2a24;
-+      --muted: #5f6c65;
-+      --line: #dce5dd;
-+      --safe-bottom: env(safe-area-inset-bottom, 0px);
-+    }
-+
-+    * { box-sizing: border-box; }
-+
-+    body {
-       margin: 0;
-+      background: linear-gradient(180deg, #edf5ef 0%, #f8faf7 100%);
-+      color: var(--text);
-+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
-+      min-height: 100vh;
-+      line-height: 1.45;
++      --text: #0f172a;
++      --muted: #475569;
++      --primary: #1d4ed8;
++      --primary-soft: #dbeafe;
++      --ok: #16a34a;
++      --line: #e2e8f0;
      }
-+
+-    h1 {
+-      font-size: 6vw;
+-      margin: 4vw 0 2vw;
+-      color: #333;
+-      text-align: center;
++    * { box-sizing: border-box; }
++    body {
++      margin: 0;
++      background: var(--bg);
++      color: var(--text);
++      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+     }
+-    .wheel-container {
+-      position: relative;
+-      width: 100vw;
+-      max-width: 400px;
 +    .app {
-+      max-width: 560px;
++      max-width: 520px;
        margin: 0 auto;
-+      display: grid;
-+      gap: 12px;
-+      padding: 14px 14px calc(94px + var(--safe-bottom));
-+    }
-+
++      min-height: 100dvh;
++      padding: 12px 14px 28px;
+     }
+-    #wheel {
+-      width: 95%;
+-      height: auto;
+-      border-radius: 50%;
+-      border: 4px solid #ccc;
+-      transform-origin: center center;
++    .top {
++      position: sticky;
++      top: 0;
++      z-index: 5;
++      background: linear-gradient(180deg, rgba(241,245,249,0.98), rgba(241,245,249,0.92));
++      backdrop-filter: blur(6px);
++      padding: 12px 2px 10px;
+     }
+-    .arrow {
+-      width: 0;
+-      height: 0;
+-      border-top: 1.2vw solid transparent;
+-      border-bottom: 1.2vw solid transparent;
+-      border-right: 2.4vw solid black;
+-      position: absolute;
+-      top: 50%;
+-      left: calc(100% - 12px);
+-      transform: translateY(-50%);
+-      z-index: 10;
++    h1 { margin: 0; font-size: 1.25rem; }
++    .sub { margin-top: 6px; color: var(--muted); font-size: .95rem; }
 +    .card {
 +      background: var(--card);
-+      border: 1px solid var(--line);
 +      border-radius: 16px;
 +      padding: 14px;
-+      box-shadow: 0 8px 24px rgba(18, 53, 36, 0.08);
-+    }
-+
-+    h1 {
-+      margin: 0;
-+      font-size: clamp(22px, 6vw, 30px);
-+      line-height: 1.3;
-+      letter-spacing: -0.2px;
-+      word-break: keep-all;
-+    }
-+
-+    .subtitle {
-+      margin: 8px 0 0;
-+      color: var(--muted);
-+      font-size: 14px;
-+      word-break: keep-all;
-+    }
-+
-+    .day-badge {
-+      display: inline-flex;
-+      align-items: center;
-+      gap: 6px;
-+      max-width: 100%;
-+      background: #e8f3ea;
-+      color: #205335;
-+      border: 1px solid #cfe2d2;
-+      border-radius: 999px;
-+      padding: 7px 12px;
-+      font-size: 13px;
-+      font-weight: 700;
++      border: 1px solid var(--line);
++      box-shadow: 0 4px 14px rgba(15,23,42,.06);
 +      margin-top: 12px;
-+      white-space: nowrap;
-+      overflow: hidden;
-+      text-overflow: ellipsis;
-+    }
-+
-+    .goal {
-+      margin-top: 12px;
-+      border-radius: 12px;
-+      background: #f7fbf7;
-+      border: 1px solid #deebdf;
-+      padding: 12px;
-+    }
-+
-+    .goal h2 {
-+      margin: 0 0 8px;
-+      font-size: 19px;
-+    }
-+
-+    .progress-wrap {
-+      margin: 10px 0 12px;
-+    }
-+
-+    .progress-row {
-+      display: flex;
-+      justify-content: space-between;
-+      font-size: 13px;
-+      color: var(--muted);
-+      margin-bottom: 6px;
-+    }
-+
+     }
+-    #controls {
+-      display: flex;
+-      flex-direction: column;
+-      align-items: center;
+-      margin-top: 5vw;
+-    }
+-    #spinBtn, #addMenuBtn {
+-      margin: 1vw;
+-      padding: 3vw 6vw;
+-      font-size: 4vw;
+-      background-color: black;
+-      color: white;
+-      border: none;
+-      border-radius: 2vw;
+-      cursor: pointer;
 +    .progress {
 +      width: 100%;
-+      height: 8px;
++      height: 11px;
 +      border-radius: 999px;
-+      border: 0;
++      background: #e2e8f0;
 +      overflow: hidden;
-+      background: #dce8de;
-+    }
-+
-+    .progress::-webkit-progress-bar { background: #dce8de; }
-+    .progress::-webkit-progress-value { background: var(--accent); }
-+    .progress::-moz-progress-bar { background: var(--accent); }
-+
-+    .goal ul {
-+      margin: 0;
-+      padding-left: 0;
-+      list-style: none;
-+      display: grid;
-+      gap: 8px;
++      margin-top: 8px;
      }
-+
-+    .goal li {
+-    #menuInput {
+-      padding: 3vw;
+-      font-size: 4vw;
+-      width: 70vw;
+-      margin-top: 2vw;
+-      border: 1px solid #ccc;
+-      border-radius: 2vw;
++    .bar {
++      height: 100%;
++      width: 0%;
++      background: linear-gradient(90deg, #2563eb, #16a34a);
++      transition: width .25s ease;
+     }
+-    #popup {
+-      position: fixed;
+-      top: 0; left: 0; right: 0; bottom: 0;
+-      background: rgba(0, 0, 0, 0.7);
++    .exercise {
        display: flex;
+-      align-items: center;
+-      justify-content: center;
+-      visibility: hidden;
+-      z-index: 1000;
+-    }
+-    #popupContent {
+-      background: white;
+-      padding: 6vw;
+-      border-radius: 3vw;
+-      text-align: center;
+-      width: 80vw;
 +      gap: 10px;
-+      border: 1px solid #e2ebe3;
-+      border-radius: 10px;
-+      background: #ffffff;
-+      padding: 9px 10px;
-+      font-size: 14px;
++      align-items: flex-start;
++      border: 1px solid var(--line);
++      border-radius: 12px;
++      padding: 10px;
++      margin-top: 8px;
++      background: #fff;
      }
-+
-+    .goal input[type="checkbox"] {
-+      inline-size: 21px;
-+      block-size: 21px;
-+      accent-color: var(--accent);
-+      flex: none;
-+    }
-+
-+    .goal label {
-+      flex: 1;
-+      word-break: keep-all;
-       cursor: pointer;
-     }
-+
-+    .goal input[type="checkbox"]:checked + label {
-+      text-decoration: line-through;
-+      color: #728078;
-     }
-+
-+    .small {
-+      font-size: 13px;
-+      color: var(--muted);
-+      margin: 10px 0 0;
-+      word-break: keep-all;
-+    }
-+
-+    .actions {
-       position: fixed;
-+      left: 0;
-+      right: 0;
-+      bottom: 0;
-+      padding: 10px 14px calc(10px + var(--safe-bottom));
-+      background: linear-gradient(180deg, rgba(244, 247, 242, 0.6), #f4f7f2 22%);
-+      backdrop-filter: blur(4px);
-+    }
-+
-+    .actions-inner {
-+      max-width: 560px;
-+      margin: 0 auto;
-+      display: grid;
-+      gap: 8px;
-+    }
-+
-+    .btn {
-+      width: 100%;
-+      min-height: 48px;
-       border: none;
+-    #popupContent h2 {
+-      font-size: 5vw;
+-      margin: 0 0 3vw;
+-    }
+-    #popupContent button {
+-      padding: 3vw 6vw;
+-      font-size: 4vw;
+-      background-color: black;
+-      color: white;
+-      border: none;
+-      border-radius: 2vw;
++    .exercise h3 { margin: 0; font-size: 1rem; }
++    .exercise p { margin: 4px 0 0; color: var(--muted); font-size: .9rem; }
++    .reward-btn, .reset-btn, .install-btn {
++      appearance: none;
++      border: 0;
 +      border-radius: 12px;
 +      padding: 12px 14px;
-+      font-size: 16px;
++      width: 100%;
 +      font-weight: 700;
-       cursor: pointer;
-+      touch-action: manipulation;
-     }
-+
-+    .btn-primary {
-+      background: var(--primary);
-+      color: white;
-     }
-+
-+    .btn-primary:disabled {
-+      background: #8aa195;
-+      cursor: not-allowed;
-+    }
-+
-+    .btn-secondary {
-+      background: #edf3ed;
-+      color: var(--primary);
-+      border: 1px solid #d7e4d8;
-+    }
-+
-+    .reward {
-+      display: none;
-+      border-left: 4px solid var(--accent);
-+      padding: 12px;
-+      background: #f5fbf6;
-+      border-radius: 10px;
-+      margin-top: 12px;
-+    }
-+
-+    .reward.show { display: block; }
-+
-+    .dialogue {
-+      margin: 8px 0 0;
-+      padding-left: 18px;
-+      display: grid;
-+      gap: 6px;
-+      font-size: 14px;
-+    }
-+
-+    .status {
++      font-size: .98rem;
 +      margin-top: 10px;
-+      font-size: 14px;
-+      font-weight: 700;
-+      color: var(--accent);
-+      word-break: keep-all;
+       cursor: pointer;
      }
+-    .confetti {
+-      position: fixed;
+-      width: 8px;
+-      height: 8px;
+-      background-color: red;
+-      z-index: 2000;
+-      animation: fall 1.5s ease-out forwards;
+-    }
+-    @keyframes fall {
+-      to {
+-        transform: translateY(100vh) rotate(720deg);
+-        opacity: 0;
+-      }
+-    }
+-    .burst {
+-      position: fixed;
+-      width: 10px;
+-      height: 10px;
+-      border-radius: 50%;
+-      background: yellow;
+-      animation: burst 800ms ease-out forwards;
+-      z-index: 2000;
++    .reward-btn { background: var(--primary); color: #fff; }
++    .reward-btn:disabled { opacity: .45; cursor: not-allowed; }
++    .reset-btn { background: #334155; color: #fff; }
++    .install-btn { background: var(--primary-soft); color: #1e3a8a; display: none; }
 +
-+    @media (min-width: 700px) {
-+      .actions { position: static; padding: 0; background: transparent; backdrop-filter: none; }
-+      .app { padding-bottom: 18px; }
++    dialog {
++      border: none;
++      border-radius: 16px;
++      max-width: 460px;
++      width: calc(100vw - 28px);
++      padding: 0;
+     }
+-    @keyframes burst {
+-      0% { transform: scale(1); opacity: 1; }
+-      100% { transform: scale(4); opacity: 0; }
++    dialog::backdrop { background: rgba(2,6,23,.58); }
++    .dialog-inner { padding: 16px; }
++    .dialog-inner h2 { margin: 0 0 10px; font-size: 1.1rem; }
++    .line { margin-top: 8px; padding: 10px; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0; }
++    .line b { color: #1d4ed8; }
++
++    .done-chip {
++      margin-top: 8px;
++      display: inline-block;
++      padding: 4px 9px;
++      border-radius: 999px;
++      background: #dcfce7;
++      color: #166534;
++      font-size: .78rem;
++      font-weight: 700;
      }
    </style>
  </head>
  <body>
+-  <h1>LUNCH MENU ROULETTE</h1>
+-  <div class="wheel-container">
+-    <canvas id="wheel" width="400" height="400"></canvas>
+-    <div class="arrow"></div>
+-  </div>
 +  <main class="app">
-+    <section class="card">
-+      <h1>40-50 남성 홈트 코치</h1>
-+      <p class="subtitle">안드로이드 스마트폰(PWA 설치 가능)에서 바로 사용하는 요일별 맨손 운동 앱</p>
-+      <span id="dayBadge" class="day-badge"></span>
++    <header class="top">
++      <h1>40-50 남성 맨손운동 플랜</h1>
++      <p class="sub" id="todayPart"></p>
++    </header>
  
 -  <div id="controls">
 -    <button id="spinBtn">돌리기</button>
 -    <input id="menuInput" type="text" placeholder="음식 이름 입력" />
 -    <button id="addMenuBtn">메뉴 추가</button>
 -  </div>
-+      <article class="goal">
-+        <h2 id="focusTitle"></h2>
++    <button id="installBtn" class="install-btn">홈 화면에 앱 설치하기</button>
  
-+        <div class="progress-wrap">
-+          <div class="progress-row">
-+            <span>체크 진행률</span>
-+            <strong id="progressText">0%</strong>
-+          </div>
-+          <progress id="progressBar" class="progress" max="100" value="0"></progress>
-+        </div>
-+
-+        <ul id="workoutList"></ul>
-+        <p id="goalText" class="small"></p>
-+      </article>
-+      <p id="statusText" class="status"></p>
+-  <div id="popup">
+-    <div id="popupContent">
+-      <h2 id="resultText">오늘 점심메뉴는 무엇?</h2>
+-      <button onclick="closePopup()">확인</button>
+-    </div>
+-  </div>
++    <section class="card">
++      <strong id="progressText">진행률 0%</strong>
++      <div class="progress" aria-hidden="true"><div id="progressBar" class="bar"></div></div>
++      <span id="doneChip" class="done-chip" hidden>오늘 목표 완료 🎉</span>
 +    </section>
 +
 +    <section class="card">
-+      <div id="rewardBox" class="reward">
-+        <strong>🎁 보상: 원어민 소통 영어 대화</strong>
-+        <p id="dialogueTitle" class="small"></p>
-+        <ol id="dialogueList" class="dialogue"></ol>
-+      </div>
++      <h2 style="margin:0;font-size:1.05rem;">오늘 운동 체크리스트</h2>
++      <div id="list"></div>
++      <button id="rewardBtn" class="reward-btn" disabled>오늘의 원어민 영어 대화 보상 받기</button>
++      <button id="resetBtn" class="reset-btn">오늘 체크 초기화</button>
 +    </section>
 +  </main>
-+
-+  <div class="actions">
-+    <div class="actions-inner">
-+      <button id="completeBtn" class="btn btn-primary">오늘 목표 완료하기 ✅</button>
-+      <button id="resetBtn" class="btn btn-secondary">오늘 완료 기록 초기화</button>
-     </div>
-   </div>
+ 
+-  <audio id="cheerSound" src="https://www.soundjay.com/human/cheering-01.mp3" preload="auto"></audio>
++  <dialog id="rewardDialog">
++    <div class="dialog-inner">
++      <h2 id="dialogTitle">보상 대화</h2>
++      <div id="dialogLines"></div>
++      <button class="reward-btn" style="margin-top:12px" onclick="rewardDialog.close()">닫기</button>
++    </div>
++  </dialog>
+ 
    <script>
-+    const plans = {
-+      0: {
-+        day: '일요일',
-+        focus: '회복 & 가동성',
-+        workouts: ['고양이-소 자세 10회 × 2세트', '전신 스트레칭 12분', '가벼운 걷기 20분'],
-+        goal: '몸을 회복시켜 다음 주 운동 효율을 높입니다.'
-+      },
-+      1: {
-+        day: '월요일',
-+        focus: '가슴 · 삼두',
-+        workouts: ['무릎/기본 푸시업 12회 × 4세트', '의자 딥스 10회 × 3세트', '플랭크 40초 × 3세트'],
-+        goal: '호흡을 유지하며 세트 간 휴식은 60초를 넘기지 않습니다.'
-+      },
-+      2: {
-+        day: '화요일',
-+        focus: '하체 · 코어',
-+        workouts: ['스쿼트 18회 × 4세트', '런지(좌/우) 12회 × 3세트', '데드버그 12회 × 3세트'],
-+        goal: '무릎보다 엉덩이 먼저 뒤로 빼며 하체를 안전하게 자극합니다.'
-+      },
-+      3: {
-+        day: '수요일',
-+        focus: '등 · 이두(맨손 변형)',
-+        workouts: ['수건 로우 15회 × 4세트', '리버스 스노우엔젤 12회 × 3세트', '슈퍼맨 홀드 30초 × 3세트'],
-+        goal: '등 수축을 느끼며 천천히 당기고 천천히 내려옵니다.'
-+      },
-+      4: {
-+        day: '목요일',
-+        focus: '어깨 · 코어 안정화',
-+        workouts: ['파이크 푸시업 10회 × 4세트', '사이드 플랭크 30초 × 3세트', '버드독 12회 × 3세트'],
-+        goal: '목에 힘을 빼고 견갑 안정에 집중합니다.'
-+      },
-+      5: {
-+        day: '금요일',
-+        focus: '전신 서킷',
-+        workouts: ['버피 8회', '푸시업 10회', '스쿼트 15회', '마운틴클라이머 30초 (4라운드)'],
-+        goal: '라운드 사이 90초 휴식으로 심폐 기능까지 함께 강화합니다.'
-+      },
-+      6: {
-+        day: '토요일',
-+        focus: '유산소 · 복부',
-+        workouts: ['제자리 걷기/조깅 25분', '레그레이즈 12회 × 3세트', '힐터치 20회 × 3세트'],
-+        goal: '무리하지 않는 강도로 꾸준함을 만듭니다.'
-       }
+-    const canvas = document.getElementById('wheel');
+-    const ctx = canvas.getContext('2d');
+-    const spinBtn = document.getElementById('spinBtn');
+-    const popup = document.getElementById('popup');
+-    const resultText = document.getElementById('resultText');
+-    const cheerSound = document.getElementById('cheerSound');
+-    const addMenuBtn = document.getElementById('addMenuBtn');
+-    const menuInput = document.getElementById('menuInput');
++    const weeklyPlan = {
++      0: { day: '일요일', part: '회복/유연성', items: [
++        ['가벼운 걷기', '20~30분'], ['고관절/흉추 스트레칭', '10분'], ['복식호흡', '5분']
++      ], topic: 'Recovery routine' },
++      1: { day: '월요일', part: '가슴/삼두', items: [
++        ['푸시업', '12회 x 4세트'], ['의자 딥스', '10회 x 3세트'], ['플랭크', '45초 x 3세트']
++      ], topic: 'Building workout habits' },
++      2: { day: '화요일', part: '하체', items: [
++        ['스쿼트', '15회 x 4세트'], ['런지', '양쪽 10회 x 3세트'], ['글루트 브릿지', '15회 x 3세트']
++      ], topic: 'Healthy dinner choices' },
++      3: { day: '수요일', part: '코어', items: [
++        ['버드독', '양쪽 12회 x 3세트'], ['데드버그', '양쪽 10회 x 3세트'], ['사이드 플랭크', '양쪽 30초 x 3세트']
++      ], topic: 'Stress relief' },
++      4: { day: '목요일', part: '등/어깨', items: [
++        ['파이크 푸시업', '8회 x 4세트'], ['슈퍼맨 자세', '12회 x 3세트'], ['Y-T-W 숄더', '10회 x 3세트']
++      ], topic: 'Work-life balance' },
++      5: { day: '금요일', part: '하체 + 심폐', items: [
++        ['월싯', '45초 x 4세트'], ['카프 레이즈', '20회 x 3세트'], ['마운틴 클라이머', '30초 x 4세트']
++      ], topic: 'Weekend plans' },
++      6: { day: '토요일', part: '전신', items: [
++        ['저강도 버피', '8회 x 3세트'], ['점핑잭', '40초 x 3세트'], ['전신 스트레칭', '10분']
++      ], topic: 'Outdoor activities' }
 +    };
  
-+    const dialogues = [
-+      {
-+        title: '카페에서 스몰토크',
-+        lines: [
-+          'A: Hi, is this seat taken?',
-+          'B: No, please have a seat.',
-+          'A: Thanks. Do you come here often?',
-+          'B: Yeah, the coffee is great and people are friendly.'
-+        ]
-+      },
-+      {
-+        title: '출장 중 길 묻기',
-+        lines: [
-+          'A: Excuse me, how can I get to City Hall?',
-+          'B: Go straight for two blocks, then turn left.',
-+          'A: Is it far from here?',
-+          'B: Not really, about a ten-minute walk.'
-+        ]
-+      },
-+      {
-+        title: '헬스 관련 대화',
-+        lines: [
-+          'A: You look energetic these days. Working out?',
-+          'B: Yes, I do home workouts five days a week.',
-+          'A: Nice! What keeps you motivated?',
-+          'B: Small daily goals and visible progress.'
-+        ]
-       }
-+    ];
-+
-+    const dayBadge = document.getElementById('dayBadge');
-+    const focusTitle = document.getElementById('focusTitle');
-+    const workoutList = document.getElementById('workoutList');
-+    const goalText = document.getElementById('goalText');
-+    const statusText = document.getElementById('statusText');
-+    const progressBar = document.getElementById('progressBar');
-+    const progressText = document.getElementById('progressText');
-+    const completeBtn = document.getElementById('completeBtn');
-+    const resetBtn = document.getElementById('resetBtn');
-+    const rewardBox = document.getElementById('rewardBox');
-+    const dialogueTitle = document.getElementById('dialogueTitle');
-+    const dialogueList = document.getElementById('dialogueList');
-+
+-    if (!localStorage.getItem('lunchMenus')) {
+-      localStorage.setItem('lunchMenus', JSON.stringify(['김치찌개', '된장찌개', '비빔밥']));
+-    }
 +    const today = new Date();
-+    const dayIndex = today.getDay();
-+    const todayPlan = plans[dayIndex];
-+    const date = today.toISOString().slice(0, 10);
-+    const dateKey = `workout_done_${date}`;
-+    const checkKey = `workout_checks_${date}`;
-+    function loadChecks() {
-+      try {
-+        return JSON.parse(localStorage.getItem(checkKey)) || [];
-+      } catch {
-+        return [];
-       }
-     }
-+    function saveChecks(checks) {
-+      localStorage.setItem(checkKey, JSON.stringify(checks));
-+    }
-+
-+    function renderProgress(checks) {
-+      const total = todayPlan.workouts.length;
-+      const done = checks.filter(Boolean).length;
-+      const percent = Math.round((done / total) * 100);
-+      progressBar.value = percent;
-+      progressText.textContent = `${percent}% (${done}/${total})`;
-     }
++    const plan = weeklyPlan[today.getDay()];
++    const dateKey = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
++    const storageKey = `workout-progress-${dateKey}`;
  
-+    function renderPlan() {
-+      const checks = loadChecks();
-+      dayBadge.textContent = `${todayPlan.day} · 오늘의 부위: ${todayPlan.focus}`;
-+      focusTitle.textContent = '오늘 운동 루틴';
-+      goalText.textContent = `목표: ${todayPlan.goal}`;
-+      workoutList.innerHTML = '';
-+      todayPlan.workouts.forEach((item, idx) => {
-+        const li = document.createElement('li');
-+        const id = `w-${idx}`;
-+        li.innerHTML = `<input id="${id}" type="checkbox" ${checks[idx] ? 'checked' : ''}><label for="${id}">${item}</label>`;
-+        const checkbox = li.querySelector('input');
-+        checkbox.addEventListener('change', () => {
-+          checks[idx] = checkbox.checked;
-+          saveChecks(checks);
-+          renderProgress(checks);
-+        });
-+        workoutList.appendChild(li);
+-    let menus = JSON.parse(localStorage.getItem('lunchMenus'));
+-    const colors = ['#FF9999', '#FFD699', '#99FF99', '#99FFFF', '#9999FF', '#D699FF', '#FF99CC', '#FFB366'];
+-    let currentRotation = 0;
++    const todayPart = document.getElementById('todayPart');
++    const list = document.getElementById('list');
++    const progressText = document.getElementById('progressText');
++    const progressBar = document.getElementById('progressBar');
++    const doneChip = document.getElementById('doneChip');
++    const rewardBtn = document.getElementById('rewardBtn');
++    const resetBtn = document.getElementById('resetBtn');
++    const rewardDialog = document.getElementById('rewardDialog');
++    const dialogTitle = document.getElementById('dialogTitle');
++    const dialogLines = document.getElementById('dialogLines');
+ 
+-    function saveMenus() {
+-      localStorage.setItem('lunchMenus', JSON.stringify(menus));
+-    }
++    todayPart.textContent = `오늘은 ${plan.day} · 운동 부위: ${plan.part}`;
+ 
+-    function drawWheel() {
+-      const slice = 2 * Math.PI / menus.length;
+-      const radius = canvas.width / 2;
+-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+-      for (let i = 0; i < menus.length; i++) {
+-        ctx.beginPath();
+-        ctx.fillStyle = colors[i % colors.length];
+-        ctx.moveTo(radius, radius);
+-        ctx.arc(radius, radius, radius, slice * i, slice * (i + 1));
+-        ctx.lineTo(radius, radius);
+-        ctx.fill();
++    let checked = JSON.parse(localStorage.getItem(storageKey) || '[]');
+ 
+-        ctx.save();
+-        ctx.translate(radius, radius);
+-        ctx.rotate(slice * (i + 0.5));
+-        ctx.textAlign = 'center';
+-        ctx.fillStyle = '#000';
+-        ctx.font = `${canvas.width / 25}px Arial`;
+-        ctx.fillText(menus[i], radius * 0.6, 5);
+-        ctx.restore();
+-      }
+-    }
++    function render() {
++      list.innerHTML = '';
++      plan.items.forEach(([name, reps], idx) => {
++        const row = document.createElement('label');
++        row.className = 'exercise';
++        const isChecked = checked.includes(idx);
++        row.innerHTML = `
++          <input type="checkbox" ${isChecked ? 'checked' : ''} data-idx="${idx}" style="margin-top:4px;width:18px;height:18px;">
++          <div>
++            <h3>${name}</h3>
++            <p>${reps}</p>
++          </div>
++        `;
++        list.appendChild(row);
 +      });
-+      renderProgress(checks);
+ 
+-    function createConfetti() {
+-      for (let i = 0; i < 50; i++) {
+-        const confetti = document.createElement('div');
+-        confetti.classList.add('confetti');
+-        confetti.style.left = Math.random() * 100 + 'vw';
+-        confetti.style.top = '-10px';
+-        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+-        document.body.appendChild(confetti);
+-        setTimeout(() => confetti.remove(), 1500);
+-      }
++      const percent = Math.round((checked.length / plan.items.length) * 100);
++      progressText.textContent = `진행률 ${percent}% (${checked.length}/${plan.items.length})`;
++      progressBar.style.width = `${percent}%`;
++      const completed = checked.length === plan.items.length;
++      rewardBtn.disabled = !completed;
++      doneChip.hidden = !completed;
++      localStorage.setItem(storageKey, JSON.stringify(checked));
      }
  
-+    function showReward() {
-+      const pick = dialogues[Math.floor(Math.random() * dialogues.length)];
-+      dialogueTitle.textContent = `오늘의 회화 주제: ${pick.title}`;
-+      dialogueList.innerHTML = '';
-+      pick.lines.forEach(line => {
-+        const li = document.createElement('li');
-+        li.textContent = line;
-+        dialogueList.appendChild(li);
-+      });
-+      rewardBox.classList.add('show');
-     }
- 
-+    function applyCompletionState() {
-+      const isDone = localStorage.getItem(dateKey) === 'done';
-+      if (isDone) {
-+        completeBtn.disabled = true;
-+        completeBtn.textContent = '오늘 목표 완료됨 🎉';
-+        statusText.textContent = '훌륭합니다! 오늘 운동은 이미 완료했어요.';
-+        showReward();
+-    function createBursts() {
+-      for (let i = 0; i < 10; i++) {
+-        const burst = document.createElement('div');
+-        burst.classList.add('burst');
+-        burst.style.left = Math.random() * 100 + 'vw';
+-        burst.style.top = Math.random() * 100 + 'vh';
+-        burst.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+-        document.body.appendChild(burst);
+-        setTimeout(() => burst.remove(), 800);
++    list.addEventListener('change', (e) => {
++      const el = e.target;
++      if (el.tagName !== 'INPUT') return;
++      const idx = Number(el.dataset.idx);
++      if (el.checked) {
++        if (!checked.includes(idx)) checked.push(idx);
 +      } else {
-+        completeBtn.disabled = false;
-+        completeBtn.textContent = '오늘 목표 완료하기 ✅';
-+        statusText.textContent = '하단 완료 버튼으로 보상 대화를 받아보세요.';
-+        rewardBox.classList.remove('show');
++        checked = checked.filter(v => v !== idx);
        }
-+    }
-+
-+    completeBtn.addEventListener('click', () => {
-+      localStorage.setItem(dateKey, 'done');
-+      applyCompletionState();
-+      window.scrollTo({ top: 0, behavior: 'smooth' });
+-    }
+-
+-    function spinWheel() {
+-      const totalRotation = 360 * 10 + Math.floor(Math.random() * 360);
+-      const duration = 5000;
+-      const start = performance.now();
+-      const initialRotation = currentRotation;
+-
+-      function animate(time) {
+-        const elapsed = time - start;
+-        const progress = Math.min(elapsed / duration, 1);
+-        const eased = 1 - Math.pow(1 - progress, 3);
+-        currentRotation = initialRotation + eased * totalRotation;
+-        canvas.style.transform = `rotate(${currentRotation}deg)`;
++      checked.sort((a, b) => a - b);
++      render();
++    });
+ 
+-        if (progress < 1) {
+-          requestAnimationFrame(animate);
+-        } else {
+-          const selectedAngle = (360 - (currentRotation % 360)) % 360;
+-          const index = Math.floor(selectedAngle / (360 / menus.length));
+-          const selectedMenu = menus[index];
+-          showResult(menus[index]);
+-        }
+-      }
+-      requestAnimationFrame(animate);
+-    }
++    resetBtn.addEventListener('click', () => {
++      checked = [];
++      render();
++    });
+ 
+-    function showResult(menu) {
+-      resultText.textContent = `오늘 점심메뉴는 ${menu}입니다!`;
+-      popup.style.visibility = 'visible';
+-      cheerSound.play();
+-      createConfetti();
+-      createBursts();
+-    }
++    rewardBtn.addEventListener('click', () => {
++      dialogTitle.textContent = `오늘의 원어민 대화: ${plan.topic}`;
++      dialogLines.innerHTML = '';
++      [
++        ['A', 'Great job finishing your workout today!'],
++        ['B', 'Thanks! I feel stronger and more focused.'],
++        ['A', 'What healthy habit will you keep tonight?'],
++        ['B', 'I will drink water and sleep on time.'],
++        ['A', 'Perfect. Consistency beats intensity.'],
++        ['B', 'Absolutely. See you tomorrow!']
++      ].forEach(([who, line]) => {
++        const p = document.createElement('p');
++        p.className = 'line';
++        p.innerHTML = `<b>${who}:</b> ${line}`;
++        dialogLines.appendChild(p);
++      });
++      rewardDialog.showModal();
++    });
+ 
+-    function closePopup() {
+-      popup.style.visibility = 'hidden';
+-    }
++    let deferredPrompt;
++    const installBtn = document.getElementById('installBtn');
+ 
+-    addMenuBtn.addEventListener('click', () => {
+-      const newMenu = menuInput.value.trim();
+-      if (newMenu) {
+-        menus.push(newMenu);
+-        saveMenus();
+-        drawWheel();
+-        menuInput.value = '';
+-      }
++    window.addEventListener('beforeinstallprompt', (e) => {
++      e.preventDefault();
++      deferredPrompt = e;
++      installBtn.style.display = 'block';
      });
  
-+    resetBtn.addEventListener('click', () => {
-+      localStorage.removeItem(dateKey);
-+      localStorage.removeItem(checkKey);
-+      renderPlan();
-+      applyCompletionState();
+-    canvas.addEventListener('click', function (e) {
+-      const rect = canvas.getBoundingClientRect();
+-      const x = e.clientX - rect.left - canvas.width / 2;
+-      const y = e.clientY - rect.top - canvas.height / 2;
+-      const angle = (Math.atan2(y, x) + 2 * Math.PI) % (2 * Math.PI);
+-      const adjustedAngle = (angle - ((currentRotation % 360) * Math.PI / 180) + 2 * Math.PI) % (2 * Math.PI);
+-      const index = Math.floor(adjustedAngle / (2 * Math.PI / menus.length));
+-      const selectedMenu = menus[index];
+-      if (confirm(`'${selectedMenu}' 메뉴를 삭제할까요?`)) {
+-        menus.splice(index, 1);
+-        saveMenus();
+-        drawWheel();
+-      }
++    installBtn.addEventListener('click', async () => {
++      if (!deferredPrompt) return;
++      deferredPrompt.prompt();
++      await deferredPrompt.userChoice;
++      deferredPrompt = null;
++      installBtn.style.display = 'none';
      });
-+    renderPlan();
-+    applyCompletionState();
-+
+ 
+-    drawWheel();
+-    spinBtn.addEventListener('click', spinWheel);
 +    if ('serviceWorker' in navigator) {
-+      window.addEventListener('load', () => {
-+        navigator.serviceWorker.register('sw.js').catch(() => {});
-+      });
++      window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
 +    }
++
++    render();
    </script>
  </body>
  </html>
+ 
+EOF
+)
