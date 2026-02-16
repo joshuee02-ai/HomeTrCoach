@@ -1,20 +1,6 @@
  <!DOCTYPE html>
  <html lang="ko">
  <head>
--  <link rel="manifest" href="manifest.json">
--  <meta name="theme-color" content="#000000">
--  <link rel="icon" href="icon.png">
--  <meta property="og:title" content="점심메뉴 룰렛">
--  <meta property="og:description" content="오늘의 점심메뉴를 재미있게 선택해보세요!">
--  <meta property="og:image" content="og_image.png">
--  <meta property="og:type" content="website">
--  <meta property="og:url" content="https://joshuee2.github.io/lunch/">
--  <meta name="apple-mobile-web-app-capable" content="yes">
--  <meta name="apple-mobile-web-app-title" content="점심메뉴 룰렛">
--  <link rel="apple-touch-icon" href="icon.png">
--  <meta charset="UTF-8">
--  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
--  <title>점심메뉴 룰렛</title>
 +  <meta charset="UTF-8" />
 +  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 +  <meta name="theme-color" content="#123524" />
@@ -30,7 +16,6 @@
 +  <link rel="apple-touch-icon" href="icon.png" />
 +  <title>40-50 남성 홈트 코치</title>
    <style>
--    html, body {
 +    :root {
 +      --card: #ffffff;
 +      --primary: #123524;
@@ -45,28 +30,12 @@
 +
 +    body {
        margin: 0;
--      padding: 0;
--      width: 100%;
--      height: 100%;
--      overflow-x: hidden;
--      background: #f2f2f2;
--      font-family: 'Arial', sans-serif;
 +      background: linear-gradient(180deg, #edf5ef 0%, #f8faf7 100%);
 +      color: var(--text);
 +      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
 +      min-height: 100vh;
 +      line-height: 1.45;
      }
--    h1 {
--      font-size: 6vw;
--      margin: 4vw 0 2vw;
--      color: #333;
--      text-align: center;
--    }
--    .wheel-container {
--      position: relative;
--      width: 100vw;
--      max-width: 400px;
 +
 +    .app {
 +      max-width: 560px;
@@ -162,32 +131,9 @@
 +      display: grid;
 +      gap: 8px;
      }
--    #wheel {
--      width: 95%;
--      height: auto;
--      border-radius: 50%;
--      border: 4px solid #ccc;
--      transform-origin: center center;
--    }
--    .arrow {
--      width: 0;
--      height: 0;
--      border-top: 1.2vw solid transparent;
--      border-bottom: 1.2vw solid transparent;
--      border-right: 2.4vw solid black;
--      position: absolute;
--      top: 50%;
--      left: calc(100% - 12px);
--      transform: translateY(-50%);
--      z-index: 10;
--    }
--    #controls {
 +
 +    .goal li {
        display: flex;
--      flex-direction: column;
-       align-items: center;
--      margin-top: 5vw;
 +      gap: 10px;
 +      border: 1px solid #e2ebe3;
 +      border-radius: 10px;
@@ -195,14 +141,6 @@
 +      padding: 9px 10px;
 +      font-size: 14px;
      }
--    #spinBtn, #addMenuBtn {
--      margin: 1vw;
--      padding: 3vw 6vw;
--      font-size: 4vw;
--      background-color: black;
--      color: white;
--      border: none;
--      border-radius: 2vw;
 +
 +    .goal input[type="checkbox"] {
 +      inline-size: 21px;
@@ -216,19 +154,11 @@
 +      word-break: keep-all;
        cursor: pointer;
      }
--    #menuInput {
--      padding: 3vw;
--      font-size: 4vw;
--      width: 70vw;
--      margin-top: 2vw;
--      border: 1px solid #ccc;
--      border-radius: 2vw;
 +
 +    .goal input[type="checkbox"]:checked + label {
 +      text-decoration: line-through;
 +      color: #728078;
      }
--    #popup {
 +
 +    .small {
 +      font-size: 13px;
@@ -239,30 +169,6 @@
 +
 +    .actions {
        position: fixed;
--      top: 0; left: 0; right: 0; bottom: 0;
--      background: rgba(0, 0, 0, 0.7);
--      display: flex;
--      align-items: center;
--      justify-content: center;
--      visibility: hidden;
--      z-index: 1000;
--    }
--    #popupContent {
--      background: white;
--      padding: 6vw;
--      border-radius: 3vw;
--      text-align: center;
--      width: 80vw;
--    }
--    #popupContent h2 {
--      font-size: 5vw;
--      margin: 0 0 3vw;
--    }
--    #popupContent button {
--      padding: 3vw 6vw;
--      font-size: 4vw;
--      background-color: black;
--      color: white;
 +      left: 0;
 +      right: 0;
 +      bottom: 0;
@@ -282,7 +188,6 @@
 +      width: 100%;
 +      min-height: 48px;
        border: none;
--      border-radius: 2vw;
 +      border-radius: 12px;
 +      padding: 12px 14px;
 +      font-size: 16px;
@@ -290,32 +195,11 @@
        cursor: pointer;
 +      touch-action: manipulation;
      }
--    .confetti {
--      position: fixed;
--      width: 8px;
--      height: 8px;
--      background-color: red;
--      z-index: 2000;
--      animation: fall 1.5s ease-out forwards;
--    }
--    @keyframes fall {
--      to {
--        transform: translateY(100vh) rotate(720deg);
--        opacity: 0;
--      }
 +
 +    .btn-primary {
 +      background: var(--primary);
 +      color: white;
      }
--    .burst {
--      position: fixed;
--      width: 10px;
--      height: 10px;
--      border-radius: 50%;
--      background: yellow;
--      animation: burst 800ms ease-out forwards;
--      z-index: 2000;
 +
 +    .btn-primary:disabled {
 +      background: #8aa195;
@@ -354,9 +238,6 @@
 +      color: var(--accent);
 +      word-break: keep-all;
      }
--    @keyframes burst {
--      0% { transform: scale(1); opacity: 1; }
--      100% { transform: scale(4); opacity: 0; }
 +
 +    @media (min-width: 700px) {
 +      .actions { position: static; padding: 0; background: transparent; backdrop-filter: none; }
@@ -365,11 +246,6 @@
    </style>
  </head>
  <body>
--  <h1>LUNCH MENU ROULETTE</h1>
--  <div class="wheel-container">
--    <canvas id="wheel" width="400" height="400"></canvas>
--    <div class="arrow"></div>
--  </div>
 +  <main class="app">
 +    <section class="card">
 +      <h1>40-50 남성 홈트 코치</h1>
@@ -384,10 +260,6 @@
 +      <article class="goal">
 +        <h2 id="focusTitle"></h2>
  
--  <div id="popup">
--    <div id="popupContent">
--      <h2 id="resultText">오늘 점심메뉴는 무엇?</h2>
--      <button onclick="closePopup()">확인</button>
 +        <div class="progress-wrap">
 +          <div class="progress-row">
 +            <span>체크 진행률</span>
@@ -417,51 +289,7 @@
 +      <button id="resetBtn" class="btn btn-secondary">오늘 완료 기록 초기화</button>
      </div>
    </div>
- 
--  <audio id="cheerSound" src="https://www.soundjay.com/human/cheering-01.mp3" preload="auto"></audio>
--
    <script>
--    const canvas = document.getElementById('wheel');
--    const ctx = canvas.getContext('2d');
--    const spinBtn = document.getElementById('spinBtn');
--    const popup = document.getElementById('popup');
--    const resultText = document.getElementById('resultText');
--    const cheerSound = document.getElementById('cheerSound');
--    const addMenuBtn = document.getElementById('addMenuBtn');
--    const menuInput = document.getElementById('menuInput');
--
--    if (!localStorage.getItem('lunchMenus')) {
--      localStorage.setItem('lunchMenus', JSON.stringify(['김치찌개', '된장찌개', '비빔밥']));
--    }
--
--    let menus = JSON.parse(localStorage.getItem('lunchMenus'));
--    const colors = ['#FF9999', '#FFD699', '#99FF99', '#99FFFF', '#9999FF', '#D699FF', '#FF99CC', '#FFB366'];
--    let currentRotation = 0;
--
--    function saveMenus() {
--      localStorage.setItem('lunchMenus', JSON.stringify(menus));
--    }
--
--    function drawWheel() {
--      const slice = 2 * Math.PI / menus.length;
--      const radius = canvas.width / 2;
--      ctx.clearRect(0, 0, canvas.width, canvas.height);
--      for (let i = 0; i < menus.length; i++) {
--        ctx.beginPath();
--        ctx.fillStyle = colors[i % colors.length];
--        ctx.moveTo(radius, radius);
--        ctx.arc(radius, radius, radius, slice * i, slice * (i + 1));
--        ctx.lineTo(radius, radius);
--        ctx.fill();
--
--        ctx.save();
--        ctx.translate(radius, radius);
--        ctx.rotate(slice * (i + 0.5));
--        ctx.textAlign = 'center';
--        ctx.fillStyle = '#000';
--        ctx.font = `${canvas.width / 25}px Arial`;
--        ctx.fillText(menus[i], radius * 0.6, 5);
--        ctx.restore();
 +    const plans = {
 +      0: {
 +        day: '일요일',
@@ -505,18 +333,8 @@
 +        workouts: ['제자리 걷기/조깅 25분', '레그레이즈 12회 × 3세트', '힐터치 20회 × 3세트'],
 +        goal: '무리하지 않는 강도로 꾸준함을 만듭니다.'
        }
--    }
 +    };
  
--    function createConfetti() {
--      for (let i = 0; i < 50; i++) {
--        const confetti = document.createElement('div');
--        confetti.classList.add('confetti');
--        confetti.style.left = Math.random() * 100 + 'vw';
--        confetti.style.top = '-10px';
--        confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
--        document.body.appendChild(confetti);
--        setTimeout(() => confetti.remove(), 1500);
 +    const dialogues = [
 +      {
 +        title: '카페에서 스몰토크',
@@ -545,7 +363,6 @@
 +          'B: Small daily goals and visible progress.'
 +        ]
        }
--    }
 +    ];
 +
 +    const dayBadge = document.getElementById('dayBadge');
@@ -567,16 +384,6 @@
 +    const date = today.toISOString().slice(0, 10);
 +    const dateKey = `workout_done_${date}`;
 +    const checkKey = `workout_checks_${date}`;
- 
--    function createBursts() {
--      for (let i = 0; i < 10; i++) {
--        const burst = document.createElement('div');
--        burst.classList.add('burst');
--        burst.style.left = Math.random() * 100 + 'vw';
--        burst.style.top = Math.random() * 100 + 'vh';
--        burst.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
--        document.body.appendChild(burst);
--        setTimeout(() => burst.remove(), 800);
 +    function loadChecks() {
 +      try {
 +        return JSON.parse(localStorage.getItem(checkKey)) || [];
@@ -584,30 +391,6 @@
 +        return [];
        }
      }
- 
--    function spinWheel() {
--      const totalRotation = 360 * 10 + Math.floor(Math.random() * 360);
--      const duration = 5000;
--      const start = performance.now();
--      const initialRotation = currentRotation;
--
--      function animate(time) {
--        const elapsed = time - start;
--        const progress = Math.min(elapsed / duration, 1);
--        const eased = 1 - Math.pow(1 - progress, 3);
--        currentRotation = initialRotation + eased * totalRotation;
--        canvas.style.transform = `rotate(${currentRotation}deg)`;
--
--        if (progress < 1) {
--          requestAnimationFrame(animate);
--        } else {
--          const selectedAngle = (360 - (currentRotation % 360)) % 360;
--          const index = Math.floor(selectedAngle / (360 / menus.length));
--          const selectedMenu = menus[index];
--          showResult(menus[index]);
--        }
--      }
--      requestAnimationFrame(animate);
 +    function saveChecks(checks) {
 +      localStorage.setItem(checkKey, JSON.stringify(checks));
 +    }
@@ -620,12 +403,6 @@
 +      progressText.textContent = `${percent}% (${done}/${total})`;
      }
  
--    function showResult(menu) {
--      resultText.textContent = `오늘 점심메뉴는 ${menu}입니다!`;
--      popup.style.visibility = 'visible';
--      cheerSound.play();
--      createConfetti();
--      createBursts();
 +    function renderPlan() {
 +      const checks = loadChecks();
 +      dayBadge.textContent = `${todayPlan.day} · 오늘의 부위: ${todayPlan.focus}`;
@@ -647,8 +424,6 @@
 +      renderProgress(checks);
      }
  
--    function closePopup() {
--      popup.style.visibility = 'hidden';
 +    function showReward() {
 +      const pick = dialogues[Math.floor(Math.random() * dialogues.length)];
 +      dialogueTitle.textContent = `오늘의 회화 주제: ${pick.title}`;
@@ -661,13 +436,6 @@
 +      rewardBox.classList.add('show');
      }
  
--    addMenuBtn.addEventListener('click', () => {
--      const newMenu = menuInput.value.trim();
--      if (newMenu) {
--        menus.push(newMenu);
--        saveMenus();
--        drawWheel();
--        menuInput.value = '';
 +    function applyCompletionState() {
 +      const isDone = localStorage.getItem(dateKey) === 'done';
 +      if (isDone) {
@@ -689,28 +457,12 @@
 +      window.scrollTo({ top: 0, behavior: 'smooth' });
      });
  
--    canvas.addEventListener('click', function (e) {
--      const rect = canvas.getBoundingClientRect();
--      const x = e.clientX - rect.left - canvas.width / 2;
--      const y = e.clientY - rect.top - canvas.height / 2;
--      const angle = (Math.atan2(y, x) + 2 * Math.PI) % (2 * Math.PI);
--      const adjustedAngle = (angle - ((currentRotation % 360) * Math.PI / 180) + 2 * Math.PI) % (2 * Math.PI);
--      const index = Math.floor(adjustedAngle / (2 * Math.PI / menus.length));
--      const selectedMenu = menus[index];
--      if (confirm(`'${selectedMenu}' 메뉴를 삭제할까요?`)) {
--        menus.splice(index, 1);
--        saveMenus();
--        drawWheel();
--      }
 +    resetBtn.addEventListener('click', () => {
 +      localStorage.removeItem(dateKey);
 +      localStorage.removeItem(checkKey);
 +      renderPlan();
 +      applyCompletionState();
      });
- 
--    drawWheel();
--    spinBtn.addEventListener('click', spinWheel);
 +    renderPlan();
 +    applyCompletionState();
 +
